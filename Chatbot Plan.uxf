@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>350</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>package :: SampleClassName
+bg=gray
+
+--
+Data members
+- for private
+- variableName : t/Type
+
+--
+Methods and Constructors
+- private
++ public
+# protected
+
++ start() : void
++ SampleClassName() : structor
++ doesSomething(int) : double
++ get()/set()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>260</y>
+      <w>350</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>chat.controller :: ChatRunner
+--
+
+--
++ main (String[]) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>350</y>
+      <w>350</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>chat.model :: Chatbot
+--
+
+--
++ get()/set()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>0</y>
+      <w>350</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>chat.controller ::ChatController
+--
+- chatbot : Chatbot
+-display : PopupDisplay
+
+--
++start() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>260</y>
+      <w>350</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>chat.view :: PopupDisplay
+--
+
+--
++ displayMessage(String) : void
++ getResponse(String) : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
