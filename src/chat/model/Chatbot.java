@@ -18,14 +18,14 @@ public class Chatbot
 	private String intro;
 	private LocalTime currentTime;
 	
-	public Chatbot(String username)
+	public Chatbot(String username)	//all are objects
 	{
 		this.movieList = null;
 		this.shoppingList = null;
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
 		this.questions = null;
-		this.username = null;
+		this.username = username;
 		this.content = null;
 		this.intro = null;
 		this.currentTime = null;
@@ -59,9 +59,45 @@ public class Chatbot
 		return null;
 	}
 	
-	public boolean lengthChecker(String input)
+	public boolean lengthChecker(String input)	//.length() > 2    ! = null
 	{
-		return false;
+		boolean validLength = false;
+		
+		if(input != null)		//== is used with primitives but can also be used with null
+		{
+			if(input.length() > 2)
+			{
+				validLength = true;
+			}
+		}
+		
+		//Sequential if
+		/*
+		 * if (input != null)
+		 * {
+		 * 		validLength = true;
+		 * }
+		 * 
+		 * if (input.length > 2)
+		 * {
+		 * 		validLength = true;
+		 * }
+		 * else
+		 * {
+		 * 		validLength = false;
+		 * }
+		 */
+		
+		//Compound if
+		/*
+		 * if (input != null && input.length() > 2)		the && operator requieres both to be correct so null can be used
+		 * {												however, null will not work with || (the OR operator)
+		 * 		validLength = true
+		 * }
+		 */
+	
+		return validLength;
+		//All of these if statements are the same to the compiler. So they don't take up more or less. The only difference is programmer preference
 	}
 	
 	public boolean htmlTagChecker(String input)

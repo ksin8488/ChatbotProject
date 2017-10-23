@@ -42,7 +42,7 @@ public class ChatbotTest
 	}
 
 	@Test
-	public void testLengthChecker()
+	public void testLengthChecker()		//.length() > 2    ! = null 				NOTE: Do not change ANYTHING in the test files. Comments are fine.
 	{
 		assertFalse("Correct zero length check",sampleBot.lengthChecker(""));
 		assertFalse("Correct null check", sampleBot.lengthChecker(null));
