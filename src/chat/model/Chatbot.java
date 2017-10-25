@@ -55,8 +55,9 @@ public class Chatbot
 		shoppingList.add("snacks");
 		shoppingList.add("vegies");
 		shoppingList.add("protein");
-		shoppingList.add("slug bait");	//WILL FAIL A TEST LATER
+//		shoppingList.add("slug bait");	//WILL FAIL A TEST LATER
 		shoppingList.add("gross things");
+		shoppingList.add("ice cream");
 	}
 	
 	private void buildCuteAnimals()
