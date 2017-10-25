@@ -20,7 +20,7 @@ public class Movie
 		this.review = null;
 		this.length = -99;
 		this.releaseDate = null;
-		this.starScore = Double.NaN;
+		this.starScore = Double.NaN;			//.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
 	}
 
 	public String getTitle()
@@ -46,7 +46,7 @@ public class Movie
 
 	public int getLength()
 	{
-		return -99999999;
+		return length; 		//-99999999;
 	}
 
 	public LocalDate getReleaseDate()
