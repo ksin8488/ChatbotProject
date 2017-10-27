@@ -14,13 +14,13 @@ public class Movie
 	
 	public Movie(String title)
 	{
-		this.title = "";
-		this.genre = null;
-		this.ratingMPAA = null;
-		this.review = null;
-		this.length = -99;
-		this.releaseDate = null;
-		this.starScore = Double.NaN;			//.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
+		this.title = title;					//""
+		this.genre = genre;					//null
+		this.ratingMPAA = ratingMPAA;		//null
+		this.review = review;				//null
+		this.length = length;				//-99
+		this.releaseDate = releaseDate;		//null
+		this.starScore = starScore;			//Double.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
 	}
 
 	public String getTitle()
@@ -30,13 +30,13 @@ public class Movie
 
 	public String getGenre()
 	{
-		this.genre = "@@@@@@@";
+								//this.genre = "@@@@@@@";
 		return genre;
 	}
 
 	public String getRatingMPAA()
 	{
-		return null;
+		return ratingMPAA;			//null
 	}
 
 	public String getReview()
@@ -61,34 +61,42 @@ public class Movie
 
 	public void setTitle(String title)
 	{
+		this.title = title;
 	}
 
 	public void setGenre(String genre)
 	{
+		this.genre = genre;
 	}
 
 	public void setRatingMPAA(String ratingMPAA)
 	{
+		this.ratingMPAA = ratingMPAA;
 	}
 
 	public void setReview(String review)
 	{
+		this.review = review;
 	}
 
 	public void setLength(int length)
 	{
+		this.length = length;
 	}
 
 	public void setReleaseDate(LocalDate releaseDate)
 	{
+		this.releaseDate = releaseDate;
 	}
 
 	public void setStarScore(double starScore)
 	{
+		this.starScore = this.starScore;
 	}
 	
 	public String toString()
 	{
-		return null;
+		String movieFacts = "";	//ADD STUFF TO THIS!
+		return movieFacts;			//null
 	}
 }
