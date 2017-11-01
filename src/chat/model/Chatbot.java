@@ -24,18 +24,18 @@ public class Chatbot
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
-		this.questions = null;
+		this.questions = new String [10];		//null
 		this.username = username;
 		this.content = null;
 		this.intro = null;
 		this.currentTime = null;
-		this.topics = null;
+		this.topics = new String [4];		//null
 		this.verbs = new String [4];
-		this.followUps = null;
+		this.followUps = new String [4];		//null
 		
 		buildVerbs();
 		buildTopics();
-		buildFollowups();
+		buildFollowUps();
 		buildQuestions();
 		buildShoppingList();
 	}
@@ -46,6 +46,16 @@ public class Chatbot
 		verbs[1] = "dislike";
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
+	}
+	
+	private void buildTopics()
+	{
+		
+	}
+	
+	private void buildFollowUps()
+	{
+		
 	}
 	
 	private void buildMovieList()
@@ -70,7 +80,16 @@ public class Chatbot
 	
 	private void buildQuestions()
 	{
-		
+		questions[0] = "What is your name? ";
+		questions[1] = "What do you like to do? ";
+		questions[2] = "What do you hate doing? ";
+		questions[3] = "What is your favorite movie? ";
+		questions[4] = "What is your favorite pie? ";
+		questions[5] = "What is your favorite holiday? ";
+		questions[6] = "What is your favorite pet? ";
+		questions[7] = "What is your favorite flavor of tree? ";
+		questions[8] = "What is your farite ocean current? ";
+		questions[9] = "What is your favorite bean type? ";
 	}
 	
 	public String processConversation(String input)
@@ -85,7 +104,7 @@ public class Chatbot
 	
 	private String buildChatbotResponse()
 	{
-		String response = "I";
+		String response = "I ";
 		int random = (int) (Math.random() * verbs.length);
 		
 		response += verbs[random];
@@ -175,8 +194,16 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean quitChecker(String exitString)
+	public boolean quitChecker(String exitString)		//makes it so that it functions but does not pass the test
 	{
+		if (exitString.equalsIgnoreCase("quit"))
+		{
+			return true;
+		}
+		else if (exitString.equals(null))
+		{
+			return false;
+		}
 		return false;
 	}
 
@@ -202,7 +229,7 @@ public class Chatbot
 
 	public String [] getQuestions()
 	{
-		return null;
+		return questions;		//null
 	}
 	
 	public String[] getVerbs()
