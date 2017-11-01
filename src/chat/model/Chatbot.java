@@ -20,7 +20,7 @@ public class Chatbot
 	
 	public Chatbot(String username)	//all are objects
 	{
-		this.movieList = null;
+		this.movieList = new ArrayList<Movie>();		//null
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
@@ -194,16 +194,13 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean quitChecker(String exitString)		//makes it so that it functions but does not pass the test
+	public boolean quitChecker(String exitString)		//
 	{
-		if (exitString.equalsIgnoreCase("quit"))
+		if (exitString != (null) && exitString.equalsIgnoreCase("quit"))
 		{
 			return true;
 		}
-		else if (exitString.equals(null))
-		{
-			return false;
-		}
+
 		return false;
 	}
 

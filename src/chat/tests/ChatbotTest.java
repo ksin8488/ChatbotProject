@@ -133,12 +133,12 @@ public class ChatbotTest
 	@Test
 	public void testQuitChecker()
 	{
-		assertFalse("Blank does not mean quit", testedChatbot.quitChecker(""));
-		assertFalse("Null does not mean quit", testedChatbot.quitChecker(null));
-		assertFalse("Exit does not mean quit", testedChatbot.quitChecker("exit"));
-		assertTrue("Quit does mean quit", testedChatbot.quitChecker("Quit"));
-		assertTrue("QUIT also means quit", testedChatbot.quitChecker("QUIT"));
-		assertFalse("Quit with other words does not mean quit", testedChatbot.quitChecker("Is it time to quit?"));
+		assertFalse("Blank does not mean quit", testedChatbot.quitChecker(""));		//"" must get a false
+		assertFalse("Null does not mean quit", testedChatbot.quitChecker(null));		//null must get a false
+		assertFalse("Exit does not mean quit", testedChatbot.quitChecker("exit"));	//"exit" must get a false
+		assertTrue("Quit does mean quit", testedChatbot.quitChecker("Quit"));			//"quit" gets a true
+		assertTrue("QUIT also means quit", testedChatbot.quitChecker("QUIT"));		//"QUIT" gets a true
+		assertFalse("Quit with other words does not mean quit", testedChatbot.quitChecker("Is it time to quit?"));		//anything else must get a false
 		
 	}
 
