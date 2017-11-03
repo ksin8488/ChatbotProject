@@ -14,7 +14,7 @@ public class Movie
 	
 	public Movie(String title)
 	{
-		this.title = title;					//""
+		this.title = "title";					//""
 		this.genre = "";					//null
 		this.ratingMPAA = "";		//null
 		this.review = "";				//null
@@ -96,7 +96,7 @@ public class Movie
 	
 	public String toString()
 	{
-		String movieFacts = "";	//ADD STUFF TO THIS!
+		String movieFacts = title + " was made in " + releaseDate + " as part of the " +  genre + " genre. It's " + length + " long and is rated as " + ratingMPAA + " with reviews saying " + review + " with a final Star Score of " + starScore;
 		return movieFacts;			//null
 	}
 }
