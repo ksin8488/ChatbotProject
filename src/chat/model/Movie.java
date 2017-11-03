@@ -20,7 +20,7 @@ public class Movie
 		this.review = "";				//null
 		this.length = 1;				//-99
 		this.releaseDate = LocalDate.of(2017, 11, 1);		//null
-		this.starScore = starScore;			//Double.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
+		this.starScore = 0.00;			//Double.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
 	}
 
 	public String getTitle()

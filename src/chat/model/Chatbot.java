@@ -66,7 +66,7 @@ public class Chatbot
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
-		shoppingList.add("vegies");
+		shoppingList.add("veggies");
 		shoppingList.add("protein");
 //		shoppingList.add("slug bait");	//WILL FAIL A TEST LATER
 		shoppingList.add("gross things");
@@ -88,7 +88,7 @@ public class Chatbot
 		questions[5] = "What is your favorite holiday? ";
 		questions[6] = "What is your favorite pet? ";
 		questions[7] = "What is your favorite flavor of tree? ";
-		questions[8] = "What is your farite ocean current? ";
+		questions[8] = "What is your favorite ocean current? ";
 		questions[9] = "What is your favorite bean type? ";
 	}
 	
@@ -181,7 +181,12 @@ public class Chatbot
 	
 	public boolean shoppingListChecker(String shoppingItem)
 	{
-		return false;
+			if(shoppingList.contains(shoppingItem))
+			{
+				return true;
+			}
+			else
+				return false;	
 	}
 	
 	public boolean movieTitleChecker(String title)
