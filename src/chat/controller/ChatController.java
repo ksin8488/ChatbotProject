@@ -18,10 +18,10 @@ public class ChatController
 	{
 		String response = display.collectResponse("What do you want to talk about?");
 
-		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
+		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))	//keeps going as long as the length is greater than 2 and the user doesn't type "quit"
 		{
-			response = popupChat(response);
-			response = display.collectResponse(response);
+			response = popupChat(response);					//sends to popupChat which then returns a new response
+			response = display.collectResponse(response);	//
 		}
 	}
 

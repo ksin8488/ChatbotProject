@@ -78,7 +78,7 @@ public class Chatbot
 		
 	}
 	
-	private void buildQuestions()
+	private void buildQuestions()	//creates and adds new strings (questions for the user) into the questions array
 	{
 		questions[0] = "What is your name? ";
 		questions[1] = "What do you like to do? ";
@@ -92,7 +92,7 @@ public class Chatbot
 		questions[9] = "What is your favorite bean type? ";
 	}
 	
-	public String processConversation(String input)
+	public String processConversation(String input)		//creates a response for the chatbot to use that takes the user's input and uses it to create a response
 	{
 		String chatbotResponse = "";
 		chatbotResponse += "You said:" + "\n" + input + "\n";
@@ -102,7 +102,7 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
-	private String buildChatbotResponse()
+	private String buildChatbotResponse()		//creates a response for the chatbot that randomly selects a verb, topic, and question to ask the user
 	{
 		String response = "I ";
 		int random = (int) (Math.random() * verbs.length);
@@ -179,7 +179,7 @@ public class Chatbot
 		return false;
 	}
 	
-	public boolean shoppingListChecker(String shoppingItem)
+	public boolean shoppingListChecker(String shoppingItem)	//looks through the shoppingList list to see if it contains the correct shoppingItem
 	{
 			if(shoppingList.contains(shoppingItem))
 			{
@@ -199,7 +199,7 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean quitChecker(String exitString)		//
+	public boolean quitChecker(String exitString)		//checks if the user typed in quit (casing doesn't matter) and returns true if they did AND if it isn't a null
 	{
 		if (exitString != (null) && exitString.equalsIgnoreCase("quit"))
 		{
