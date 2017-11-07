@@ -62,7 +62,10 @@ public class Chatbot
 	
 	private void buildMovieList()
 	{
-		movieList.add(new Movie ("Spider-man: Homecoming", "Science Fiction", "pg-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));		//("Spider-man: Homecoming", "Science Fiction", "pg-13", "92%", 133, LocalDate.of(2017, 06, 28), 4);
+		movieList.add(new Movie ("Spiderman: Homecoming", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
+		movieList.add(new Movie ("Hidden Figures", "Drama/Histroy", "PG", "92%", 127, LocalDate.of(2016, 12, 25), 4.0));
+		movieList.add(new Movie ("March of the Penguins", "Documentary", "G", "94%", 86, LocalDate.of(2005, 06, 24), 4.0));
+		movieList.add(new Movie ("National Treasure", "Thriller", "PG", "88%", 131, LocalDate.of(2004, 11, 19), 3.5));
 	}
 	
 	private void buildShoppingList()
@@ -193,11 +196,12 @@ public class Chatbot
 	
 	public boolean movieTitleChecker(String title)
 	{
-//		if movieTitle != ("") && movieTitle.equalsIgnoreCase ("Spiderman") && movieTitle.equalsIgnoreCase ("Hidden Figures")
-//				{
-//					return true;
-//				}
-		return false;
+		if(movieList.contains(title))
+		{
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	public boolean movieGenreChecker(String genre)
