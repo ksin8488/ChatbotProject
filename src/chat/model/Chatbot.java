@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.List;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -36,8 +37,9 @@ public class Chatbot
 		buildVerbs();
 		buildTopics();
 		buildFollowUps();
-		buildQuestions();
+		buildMovieList();
 		buildShoppingList();
+		buildQuestions();
 	}
 	
 	private void buildVerbs()
@@ -60,7 +62,7 @@ public class Chatbot
 	
 	private void buildMovieList()
 	{
-
+		movieList.add(new Movie ("Spider-man: Homecoming", "Science Fiction", "pg-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));		//("Spider-man: Homecoming", "Science Fiction", "pg-13", "92%", 133, LocalDate.of(2017, 06, 28), 4);
 	}
 	
 	private void buildShoppingList()
@@ -191,6 +193,10 @@ public class Chatbot
 	
 	public boolean movieTitleChecker(String title)
 	{
+//		if movieTitle != ("") && movieTitle.equalsIgnoreCase ("Spiderman") && movieTitle.equalsIgnoreCase ("Hidden Figures")
+//				{
+//					return true;
+//				}
 		return false;
 	}
 	
