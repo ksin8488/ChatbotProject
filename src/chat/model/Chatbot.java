@@ -60,7 +60,7 @@ public class Chatbot
 		
 	}
 	
-	private void buildMovieList()
+	private void buildMovieList()	//adds movie title and information to the ArrayList as well as to be used in Movie.java
 	{
 		movieList.add(new Movie ("Spiderman: Homecoming", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
 		movieList.add(new Movie ("Hidden Figures", "Drama/Histroy", "PG", "92%", 127, LocalDate.of(2016, 12, 25), 4.0));
@@ -119,6 +119,14 @@ public class Chatbot
 		
 		random = (int) (Math.random() * questions.length);
 		response += questions[random];
+		
+		random = (int) (Math.random() * 2);
+		
+		if (random % 2 == 0) //almost 50% chance, checks if it is divisible by 2 between 1 & 2 and takes the remainder
+		{
+			random = (int) (Math.random()* movieList.size());
+			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";	//gets a random movie title and displays it with a statement
+		}
 		
 		return response;
 	}
@@ -196,12 +204,16 @@ public class Chatbot
 	
 	public boolean movieTitleChecker(String title)
 	{
-		if(movieList.contains(title))
-		{
-			return true;
-		}
-		else
-			return false;
+//		for(int i = 0; i < movieList.length(); i++) 
+//		{
+//			if(movieList.contains(title))
+//			{
+//				return true;
+//			}
+//			else
+//				return false;
+//		}
+		return false;
 	}
 	
 	public boolean movieGenreChecker(String genre)
