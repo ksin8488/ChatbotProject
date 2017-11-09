@@ -97,7 +97,12 @@ public class Chatbot
 		questions[9] = "What is your favorite bean type? ";
 	}
 	
-	public String processConversation(String input)		//creates a response for the chatbot to use that takes the user's input and uses it to create a response
+	/**
+	 * Method takes the user's response and creates a new text String based on the response and returns it as displayed text.
+	 * @param input - takes the user's response as a text String into the parameter.
+	 * @return The text combined from chatbotResponse and buildChatbotResponse() is returned.
+	 */
+	public String processConversation(String input)		//creates a method response for the chatbot to use that takes the user's input and uses it to create a response
 	{
 		String chatbotResponse = "";
 		chatbotResponse += "You said:" + "\n" + input + "\n";
@@ -107,6 +112,10 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
+	/**
+	 * Creates a response for the chatbot by taking user input and randomized selections and connecting them together
+	 * @return the response made from user text and random verbs, topics, and questions.
+	 */
 	private String buildChatbotResponse()		//creates a response for the chatbot that randomly selects a verb, topic, and question to ask the user
 	{
 		String response = "I ";
@@ -131,6 +140,11 @@ public class Chatbot
 		return response;
 	}
 	
+	/**
+	 * Checks the user's response to see if it is longer than 2 characters.
+	 * @param input - User's response as a text String is the input.
+	 * @return Returns true if the String is longer than 2 characters else returns false.
+	 */
 	public boolean lengthChecker(String input)	//.length() > 2    ! = null
 	{
 		boolean validLength = false;
