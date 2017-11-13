@@ -62,7 +62,7 @@ public class Chatbot
 	
 	private void buildMovieList()	//adds movie title and information to the ArrayList as well as to be used in Movie.java
 	{
-		movieList.add(new Movie ("Spiderman: Homecoming", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
+		movieList.add(new Movie ("Spiderman", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
 		movieList.add(new Movie ("Hidden Figures", "Drama/Histroy", "PG", "92%", 127, LocalDate.of(2016, 12, 25), 4.0));
 		movieList.add(new Movie ("March of the Penguins", "Documentary", "G", "94%", 86, LocalDate.of(2005, 06, 24), 4.0));
 		movieList.add(new Movie ("National Treasure", "Thriller", "PG", "88%", 131, LocalDate.of(2004, 11, 19), 3.5));
@@ -218,16 +218,17 @@ public class Chatbot
 	
 	public boolean movieTitleChecker(String title)
 	{
-//		for(int i = 0; i < movieList.length(); i++) 
-//		{
-//			if(movieList.contains(title))
-//			{
-//				return true;
-//			}
-//			else
-//				return false;
-//		}
-		return false;
+		boolean gotMovie = false;
+		
+		for(int i = 0; i < movieList.size(); i++) 
+		{
+			if(movieList.get(i).getTitle().contains(title))
+			{
+				gotMovie = true;
+			}
+		}
+		
+		return gotMovie;
 	}
 	
 	public boolean movieGenreChecker(String genre)

@@ -12,16 +12,16 @@ public class Movie
 	private LocalDate releaseDate;
 	private double starScore;
 	
-	public Movie(String title)
-	{
-		this.title = "title";					//""
-		this.genre = "";					//null
-		this.ratingMPAA = "";		//null
-		this.review = "";				//null
-		this.length = 1;				//-99
-		this.releaseDate = LocalDate.of(2017, 11, 1);		//null
-		this.starScore = 0.00;			//Double.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
-	}
+//	public Movie(String title)
+//	{
+//		this.title = "title";					//""
+//		this.genre = "";					//null
+//		this.ratingMPAA = "";		//null
+//		this.review = "";				//null
+//		this.length = 1;				//-99
+//		this.releaseDate = LocalDate.of(2017, 11, 1);		//null
+//		this.starScore = 0.00;			//Double.NaN essentially means that it is both - infinity and + infinity all at once (Undefined)
+//	}
 
 	//another Movie function to pass all the movie information into it
 	public Movie(String title, String genre, String ratingMPAA, String review, int length, LocalDate releaseDate, double starScore)
