@@ -26,6 +26,13 @@ public class ChatPanel extends JPanel
 		super();
 		this.appController = appController;
 		
+		//Initialize GUI data members
+		chatButton = new JButton("chat");
+		chatArea = new JTextArea(10, 25);
+		inputField = new JTextField(20);
+		appLayout = new SpringLayout();
+	
+		//Method Calls
 		setupPanel();
 		setupLayout();
 		setupListeners();
