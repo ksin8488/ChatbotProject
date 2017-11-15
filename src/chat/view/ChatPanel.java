@@ -24,6 +24,7 @@ public class ChatPanel extends JPanel
 		setupLayout();
 		setupListeners();
 	}
+	
 	private void setupPanel()
 	{
 		
