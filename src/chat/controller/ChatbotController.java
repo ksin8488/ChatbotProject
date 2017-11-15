@@ -4,13 +4,13 @@ import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
 
-public class ChatController
+public class ChatbotController
 {
 	private Chatbot chatbot;
 	private PopupDisplay display;
 	private ChatFrame appFrame;
 
-	public ChatController()
+	public ChatbotController()
 	{
 		chatbot = new Chatbot("Kashish Singh");
 		display = new PopupDisplay();

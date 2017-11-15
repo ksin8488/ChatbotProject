@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
-import chat.controller.ChatController;
+import chat.controller.ChatbotController;
 import java.awt.Color;
 import javax.swing.SpringLayout;
 
@@ -15,13 +15,13 @@ import java.awt.event.ActionListener;
 
 public class ChatPanel extends JPanel
 {
-	private ChatController appController;
+	private ChatbotController appController;
 	private JButton chatButton;
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	
-	public ChatPanel(ChatController appController)
+	public ChatPanel(ChatbotController appController)
 	{
 		super();
 		this.appController = appController;
@@ -45,6 +45,9 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		chatArea.setEnabled(false);		//makes it so user can't enable it
+		chatArea.setEditable(false);		//makes it so user can't type into it
+		
 	}
 	
 	private void setupLayout()
