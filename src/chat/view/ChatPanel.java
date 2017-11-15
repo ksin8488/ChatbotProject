@@ -38,9 +38,13 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
-	private void setupPanel()
+	private void setupPanel()	//install layout manager and components
 	{
-		
+		this.setBackground(Color.orange);
+		this.setLayout(appLayout);
+		this.add(chatButton);
+		this.add(inputField);
+		this.add(chatArea);
 	}
 	
 	private void setupLayout()
