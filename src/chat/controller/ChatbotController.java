@@ -24,12 +24,24 @@ public class ChatbotController
 	public void start()
 	{
 		String response = display.collectResponse("What do you want to talk about?");
-
-//		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))	//keeps going as long as the length is greater than 2 and the user doesn't type "quit"
-//		{
-//			response = popupChat(response);					//sends to popupChat which then returns a new response
-//			response = display.collectResponse(response);	//
-//		}
+	}
+	
+	public String interactWithChatbot(String input)
+	{
+		String chatbotSays = "";	//MUST have this when having a String
+		
+		chatbotSays += chatbot.processConversation(input);
+		
+		return chatbotSays;			//MUST have a return for Strings
+	}
+	
+	/**
+	 * Helper Method to close the app after displaying a goodbye
+	 */
+	private void close()
+	{
+		display.displayText("Goodbye");
+		System.exit(0);		//0 is a correct exit of the system
 	}
 
 	/**
