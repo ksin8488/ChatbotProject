@@ -4,7 +4,7 @@ import chat.view.PopupDisplay;
 
 public class ChatRunner
 {
-	public static void main (String [] args)
+	public static void main (String [] args)	//can use the terminal to run
 	{
 		ChatbotController app = new ChatbotController();
 		app.start();

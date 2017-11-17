@@ -30,6 +30,10 @@ public class ChatbotController
 	{
 		String chatbotSays = "";	//MUST have this when having a String
 		
+		if(chatbot.quitChecker(input))
+		{
+			close();
+		}
 		chatbotSays += chatbot.processConversation(input);
 		
 		return chatbotSays;			//MUST have a return for Strings

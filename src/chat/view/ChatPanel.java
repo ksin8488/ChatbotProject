@@ -20,6 +20,7 @@ public class ChatPanel extends JPanel
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
+	private JButton checkerButton;
 	
 	/**
 	 * Initializes GUI data members then calls the methods when the app runs
@@ -35,6 +36,7 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10, 25);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
+		checkerButton = new JButton("check");
 		
 		//Method Calls
 		setupPanel();
@@ -52,6 +54,7 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		this.add(checkerButton);
 		chatArea.setEnabled(false);		//makes it so user can't enable it
 		chatArea.setEditable(false);		//makes it so user can't type into it
 		
@@ -69,6 +72,8 @@ public class ChatPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.SOUTH, chatButton, -10, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, this);
 		appLayout.putConstraint(SpringLayout.WEST, inputField, 0, SpringLayout.WEST, chatArea);
+		appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 6, SpringLayout.SOUTH, chatArea);
+		appLayout.putConstraint(SpringLayout.WEST, checkerButton, 183, SpringLayout.WEST, this);
 	}
 	
 	/**
@@ -76,15 +81,24 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupListeners()
 	{
-		chatButton.addActionListener(new ActionListener()
+		chatButton.addActionListener(new ActionListener()		//Button sends the user's response to be processed
 		{
 			public void actionPerformed(ActionEvent click)
 			{
 				String userText = inputField.getText();
 				String displayText = appController.interactWithChatbot(userText);
 				chatArea.append(displayText);	//append adds to the end of the page
-				inputField.setText("");;
+				inputField.setText("");
 			}
 		});
+		
+		checkerButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//processChecker string method
+			}
+		});
+	
 	}
 }
