@@ -71,8 +71,20 @@ public class ChatPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, inputField, 0, SpringLayout.WEST, chatArea);
 	}
 	
+	/**
+	 * Allows inputs to go into the interaction with the chatbot to be processed from the window
+	 */
 	private void setupListeners()
 	{
-		
+		chatButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String userText = inputField.getText();
+				String displayText = appController.interactWithChatbot(userText);
+				chatArea.append(displayText);	//append adds to the end of the page
+				inputField.setText("");;
+			}
+		});
 	}
 }
