@@ -29,8 +29,8 @@ public class FrameTest
 	@Test
 	public void testChatFrame()
 	{
-		assertNotNull("Controller data member needs to be initialized", testedFrame.getBaseController());
-		assertTrue("Controller must be an instance of ChatbotController", testedFrame.getBaseController() instanceof ChatbotController);
+		assertNotNull("Controller data member needs to be initialized", testedFrame.getAppController());
+		assertTrue("Controller must be an instance of ChatbotController", testedFrame.getAppController() instanceof ChatbotController);
 	}
 	
 	@Test

@@ -21,6 +21,10 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	
+	/**
+	 * Initializes GUI data members then calls the methods when the app runs
+	 * @param appController checks if the app ran
+	 */
 	public ChatPanel(ChatbotController appController)
 	{
 		super();
@@ -38,6 +42,9 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
+	/**
+	 * Set's the data members and ensures users can't access certain fields
+	 */
 	private void setupPanel()	//install layout manager and components
 	{
 		this.setBackground(Color.orange);
@@ -50,6 +57,9 @@ public class ChatPanel extends JPanel
 		
 	}
 	
+	/**
+	 * Sets up the layout of the windows
+	 */
 	private void setupLayout()
 	{
 		appLayout.putConstraint(SpringLayout.NORTH, chatArea, 60, SpringLayout.NORTH, this);

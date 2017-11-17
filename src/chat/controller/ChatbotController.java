@@ -10,12 +10,16 @@ public class ChatbotController
 	private PopupDisplay display;
 	private ChatFrame appFrame;
 
+	/**
+	 * initializes certain values as well as activate them
+	 */
 	public ChatbotController()
 	{
 		chatbot = new Chatbot("Kashish Singh");
 		display = new PopupDisplay();
 		appFrame = new ChatFrame(this);
 	}
+
 
 	public void start()
 	{
@@ -28,6 +32,11 @@ public class ChatbotController
 //		}
 	}
 
+	/**
+	 * The user's response is processed and added to the response which is then returned
+	 * @param chat - takes the chat and processes it into processConversation
+	 * @return returns the response of the chatbot to the user
+	 */
 	private String popupChat(String chat)
 	{
 		String chatbotSays = "";		//assigns a valid value to a variable that will be returned for the method
