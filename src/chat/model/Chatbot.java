@@ -64,7 +64,7 @@ public class Chatbot
 	{
 		movieList.add(new Movie ("Spiderman", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
 		movieList.add(new Movie ("Hidden Figures", "Drama/Histroy", "PG", "92%", 127, LocalDate.of(2016, 12, 25), 4.0));
-		movieList.add(new Movie ("March of the Penguins", "Documentary", "G", "94%", 86, LocalDate.of(2005, 06, 24), 4.0));
+		movieList.add(new Movie ("March of the Penguins","Documentary", "G", "94%", 86, LocalDate.of(2005, 06, 24), 4.0));
 		movieList.add(new Movie ("National Treasure", "Thriller", "PG", "88%", 131, LocalDate.of(2004, 11, 19), 3.5));
 	}
 	
@@ -222,7 +222,7 @@ public class Chatbot
 		
 		for(int i = 0; i < movieList.size(); i++) 
 		{
-			if(movieList.get(i).getTitle().contains(title))
+			if(movieList.get(i).getTitle().length() > 0 && movieList.get(i).getTitle().contains(title))
 			{
 				gotMovie = true;
 			}
@@ -233,6 +233,7 @@ public class Chatbot
 	
 	public boolean movieGenreChecker(String genre)
 	{
+		
 		return false;
 	}
 
