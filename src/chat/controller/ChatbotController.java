@@ -51,6 +51,22 @@ public class ChatbotController
 		return chatbotSays;			//MUST have a return for Strings
 	}
 	
+	public String useCheckers(String text)
+	{
+		String response = "";
+		
+		if(chatbot.contentChecker(text))
+		{
+			response += "This text matches the special content\n";
+		}
+		if(chatbot.cuteAnimalMemeChecker(text))
+		{
+			response += "";
+		}
+		//continue with all checkers except length and quit checker
+		
+		return response;
+	}
 	/**
 	 * Helper Method to close the app after displaying a goodbye
 	 */
