@@ -25,12 +25,19 @@ public class ChatbotController
 		appFrame = new ChatFrame(this);
 	}
 
-
+	/**
+	 * Displays the first text from the chatBot and prepares to collectResponse and store it as a string called "response"
+	 */
 	public void start()
 	{
 		String response = display.collectResponse("What do you want to talk about?");
 	}
 	
+	/**
+	 * Takes in the user's response and checks if it say to quit. If not then it creates a response and returns it
+	 * @param input - user's response
+	 * @return the response of the Chatbot from combining chatbotSays and processConversation with the input
+	 */
 	public String interactWithChatbot(String input)
 	{
 		String chatbotSays = "";	//MUST have this when having a String
