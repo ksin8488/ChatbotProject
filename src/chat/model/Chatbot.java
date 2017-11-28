@@ -139,6 +139,22 @@ public class Chatbot
 			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";	//gets a random movie title and displays it with a statement
 		}
 		
+		int followup = (int) (Math.random() * 5);
+		switch (followup)
+		{
+		case 0:
+			response += followUps[0] + "\n";
+			break;
+		case 3:
+			response += followUps[1] + "\n";
+		case 1:
+			response += followUps[2]+ "\n";
+			break;
+		default:
+			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
+			break;
+		}
 		return response;
 	}
 	
@@ -224,7 +240,7 @@ public class Chatbot
 		
 		for(int i = 0; i < movieList.size(); i++) 
 		{
-			if(!movieList.get(i).getTitle().equals("")  && movieList.get(i).getTitle().contains(title))
+			if(!movieList.get(i).getTitle().contains("")  && movieList.get(i).getTitle().contains(title))
 			{
 				gotMovie = true;
 			}
@@ -238,10 +254,12 @@ public class Chatbot
 		boolean gotGenre = false;
 		for(int i = 0; i < movieList.size(); i++)
 		{
-			if(!movieList.get(i).getGenre().equals("") && movieList.get(i).getGenre().contains(genre))
+			if(!movieList.get(i).getGenre().contains("") && movieList.get(i).getGenre().contains(genre))
 			{
 				gotGenre = true;
 			}
+			else
+				gotGenre = false;
 		}
 		return gotGenre;
 	}
@@ -308,12 +326,12 @@ public class Chatbot
 
 	public String getIntro()
 	{
-		return null;
+		return intro;
 	}
 	
 	public LocalTime getCurrentTime()
 	{
-		return null;
+		return currentTime;
 	}
 	
 	public void setUsername(String username)
