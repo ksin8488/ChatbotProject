@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JLabel;
 
 import chat.controller.ChatbotController;
 import java.awt.Color;
@@ -21,6 +22,7 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	private JButton checkerButton;
+	private JLabel infoLabel;
 	
 	/**
 	 * Initializes GUI data members then calls the methods when the app runs
@@ -37,6 +39,7 @@ public class ChatPanel extends JPanel
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
 		checkerButton = new JButton("check");
+		infoLabel = new JLabel("Type to chat with the chatbot");
 		
 		//Method Calls
 		setupPanel();

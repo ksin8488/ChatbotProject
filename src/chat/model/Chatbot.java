@@ -206,7 +206,27 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		return false;
+		input.toLowerCase();		//forces all letters to become lower case so they are all the same to avoid conflicts
+		
+		if (input.contains("<") && !input.contains(">"))
+			return false;
+		
+		else if (input.contains("<>"))
+			return false;
+
+		
+		//checks if the code has an open and close bracket
+//		int firstBracketPosition = input.indexOf("<");
+//		int secondBracketPosition = input.indexOf(">");
+//
+//		
+//		if(firstBracketPosition != -1 && secondBracketPosition != -1)
+//		{
+//			String tagText = input.substring(0, secondBracketPosition +1);
+//		}
+//		else
+			return false;
+		
 	}
 	
 	public boolean userNameChecker(String input)
