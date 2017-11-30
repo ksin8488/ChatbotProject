@@ -206,28 +206,85 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		input.toLowerCase();		//forces all letters to become lower case so they are all the same to avoid conflicts
 		
-		if (input.contains("<") && !input.contains(">"))
-			return false;
+		//Mr. Hendrichsen's code, not all for completing the tests
+		boolean containsHTML = false;
+		if(input == null || !input.contains("<"))
+		{
+			return containsHTML;
+		}
 		
-		else if (input.contains("<>"))
-			return false;
-
+		 int firstOpen = input.indexOf("<");
+		 int firstClose = input.indexOf(">", firstOpen);
+		 int secondOpen = -9; //Guaranteed to be wrong
+		 int secondClose = -9;
+		 String tagText =  "";
+		 
+		 //Check bad tags
+		 if(input.contains("<>") || input.indexOf("< >") > -1)
+		 {
+			 containsHTML = false;
+		 }
+		 //Check singleton
+		 if(input.toUpperCase().contains("<P>") || input.toLowerCase().contains("<br>"));
+		 {
+			 containsHTML = true;
+		 }
+		 else if(firstClose > firstOpen)
+		 {
+			 //Others
+			 tagText = input.substring(firstOpen +1,  firstClose).toLowerCase();
+			 secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
+			 
+			 containsHTML = false;
+		 }
+		 
+		 
+		 
 		
-		//checks if the code has an open and close bracket
-//		int firstBracketPosition = input.indexOf("<");
-//		int secondBracketPosition = input.indexOf(">");
-//
-//		
-//		if(firstBracketPosition != -1 && secondBracketPosition != -1)
-//		{
-//			String tagText = input.substring(0, secondBracketPosition +1);
-//		}
-//		else
-			return false;
-		
+//			input.toLowerCase();		//forces all letters to become lower case so they are all the same to avoid conflicts
+//			
+//			if (input.contains("<") && !input.contains(">"))
+//				return false;
+//			
+//			else if (input.contains("<>"))
+//				return false;
+//			//Alec Jone's code below
+//			else if(input.contains("< >"))
+//				return false;
+//			
+//			else
+//			{
+//				if (input.contains("</"))
+//					return true;
+//				
+//				else if (input.contains("<P>") || input.contains("<BR>"))
+//					return true;
+//				
+//				else
+//					return false;
+//			}
+		 
+//			My Attempt
+//			//checks if the code has an open and close bracket
+//			int firstBracketPosition = input.indexOf("<");
+//			int secondBracketPosition = input.indexOf(">");
+//			String tagText = "";
+	//
+//			
+//			// if there's a "</......"
+//			if(firstBracketPosition != -1 && secondBracketPosition != -1)
+//			{
+//				tagText = input.substring(0, secondBracketPosition +1);
+//				return false;	//DELETE LATER
+//			}
+//			else
+//				return false;
 	}
+
+
+
+
 	
 	public boolean userNameChecker(String input)
 	{
