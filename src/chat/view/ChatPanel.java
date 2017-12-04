@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 import chat.controller.ChatbotController;
 import java.awt.Color;
@@ -23,6 +24,8 @@ public class ChatPanel extends JPanel
 	private SpringLayout appLayout;
 	private JButton checkerButton;
 	private JLabel infoLabel;
+	//Need a data member for the scrollpane
+	private JScrollPane chatScrollPane;
 	
 	/**
 	 * Initializes GUI data members then calls the methods when the app runs
