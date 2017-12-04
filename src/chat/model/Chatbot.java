@@ -151,7 +151,7 @@ public class Chatbot
 			response += followUps[2]+ "\n";
 			break;
 		default:
-			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
 			response += followUps[3] + "\n";
 			break;
 		}
@@ -238,6 +238,7 @@ public class Chatbot
 //			 
 //			 containsHTML = false;
 //		 }
+		 return false;
 		 
 		 
 		 
