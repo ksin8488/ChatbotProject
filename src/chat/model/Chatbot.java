@@ -230,14 +230,14 @@ public class Chatbot
 		 {
 			 containsHTML = true;
 		 }
-		 else if(firstClose > firstOpen)
-		 {
-			 //Others
-			 tagText = input.substring(firstOpen +1,  firstClose).toLowerCase();
-			 secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
-			 
-			 containsHTML = false;
-		 }
+//		 else if(firstClose > firstOpen)
+//		 {
+//			 //Others
+//			 tagText = input.substring(firstOpen +1,  firstClose).toLowerCase();
+//			 secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
+//			 
+//			 containsHTML = false;
+//		 }
 		 
 		 
 		 
