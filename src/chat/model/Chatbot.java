@@ -21,18 +21,18 @@ public class Chatbot
 	
 	public Chatbot(String username)	//all are objects
 	{
-		this.movieList = new ArrayList<Movie>();		//null
+		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
-		this.questions = new String [10];		//null
+		this.questions = new String [10];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
-		this.currentTime = null;
-		this.topics = new String [4];		//null
+		this.currentTime = LocalTime.now();
+		this.topics = new String [4];
 		this.verbs = new String [4];
-		this.followUps = new String [4];		//null
+		this.followUps = new String [4];	
 		
 		buildVerbs();
 		buildTopics();
@@ -101,12 +101,14 @@ public class Chatbot
 	
 	/**
 	 * Method takes the user's response and creates a new text String based on the response and returns it as displayed text.
-	 * @param input - takes the user's response as a text String into the parameter.
+	 * @param input - takes the user's response
 	 * @return The text combined from chatbotResponse and buildChatbotResponse() is returned.
 	 */
 	public String processConversation(String input)		//creates a method response for the chatbot to use that takes the user's input and uses it to create a response
 	{
 		String chatbotResponse = "";
+		currentTime = LocalTime.now();
+		chatbotResponse += currentTime.getHour() + ":" + currentTime.getMinute() + " ";
 		chatbotResponse += "You said:" + "\n" + input + "\n";
 		
 		chatbotResponse += buildChatbotResponse();
@@ -230,15 +232,17 @@ public class Chatbot
 		 {
 			 containsHTML = true;
 		 }
+		 //Check Others
 //		 else if(firstClose > firstOpen)
 //		 {
 //			 //Others
-//			 tagText = input.substring(firstOpen +1,  firstClose).toLowerCase();
+//			 tagText = input.substring(firstOpen + 1,  firstClose).toLowerCase();
 //			 secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
 //			 
 //			 containsHTML = false;
 //		 }
-		 return false;
+		 
+		 return containsHTML;
 		 
 		 
 		 
@@ -265,22 +269,6 @@ public class Chatbot
 //				else
 //					return false;
 //			}
-		 
-//			My Attempt
-//			//checks if the code has an open and close bracket
-//			int firstBracketPosition = input.indexOf("<");
-//			int secondBracketPosition = input.indexOf(">");
-//			String tagText = "";
-	//
-//			
-//			// if there's a "</......"
-//			if(firstBracketPosition != -1 && secondBracketPosition != -1)
-//			{
-//				tagText = input.substring(0, secondBracketPosition +1);
-//				return false;	//DELETE LATER
-//			}
-//			else
-//				return false;
 	}
 
 
@@ -290,38 +278,44 @@ public class Chatbot
 	public boolean userNameChecker(String input)
 	{
 		boolean validUsername = false;
-		
-		if(username.contains(input))
-		{
-			validUsername = true;
-		}
-		if(username.contains("@"))
-		{
-			validUsername = true;
-		}
-		if(username.contains("") || username.equals(null))	//have to use ".equals" to check null
-		{
-			validUsername = false;
-		}
-		
 		int symbolCount = 0;
+		
+		//Checks for double or more "@" symbols
 		for(int i = 0; i > username.length(); i++)
 		{
-			if(username.charAt(i) == '@')	//"" is for a string '' is for a character
+		    if(username.charAt(i) == '@')	//"" is for a string '' is for a character
 			{
 				symbolCount =+ 1;
 			}
 		}
-		if(symbolCount >= 2)
+		
+		//Testing starts here
+		if(username.contains(input))
+		{
+			validUsername = true;
+		}
+		else if(!username.contains("@"))
+		{
+			validUsername = false;
+		}
+		else if(username.contains("") || username.equals(null))	//have to use ".equals" to check null
+		{
+			validUsername = false;
+		}
+	
+		else if(symbolCount >= 2)
 		{
 			validUsername = false;
 		}
 		
-		if(!username.substring(0, 1).equals('@') || !username.substring(0, 1).contains(""))
+		else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
 		{
 			validUsername = false;
 		}
-
+		else
+		{
+			
+		}
 
 		return validUsername;
 	}
