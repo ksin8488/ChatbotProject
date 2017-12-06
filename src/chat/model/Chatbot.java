@@ -289,7 +289,41 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		return false;
+		boolean validUsername = false;
+		
+		if(username.contains(input))
+		{
+			validUsername = true;
+		}
+		if(username.contains("@"))
+		{
+			validUsername = true;
+		}
+		if(username.contains("") || username.equals(null))	//have to use ".equals" to check null
+		{
+			validUsername = false;
+		}
+		
+		int symbolCount = 0;
+		for(int i = 0; i > username.length(); i++)
+		{
+			if(username.charAt(i) == '@')	//"" is for a string '' is for a character
+			{
+				symbolCount =+ 1;
+			}
+		}
+		if(symbolCount >= 2)
+		{
+			validUsername = false;
+		}
+		
+		if(!username.substring(0, 1).equals('@') || !username.substring(0, 1).contains(""))
+		{
+			validUsername = false;
+		}
+
+
+		return validUsername;
 	}
 	
 	public boolean contentChecker(String contentCheck)
