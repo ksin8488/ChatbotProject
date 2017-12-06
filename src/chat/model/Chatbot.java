@@ -218,7 +218,7 @@ public class Chatbot
 		
 		 int firstOpen = input.indexOf("<");
 		 int firstClose = input.indexOf(">", firstOpen);
-		 int secondOpen = -9; //Guaranteed to be wrong
+		 int secondOpen = -9; 	//Guaranteed to be wrong
 		 int secondClose = -9;
 		 String tagText =  "";
 		 
@@ -290,34 +290,66 @@ public class Chatbot
 		}
 		
 		//Testing starts here
+		
+		
 		if(username.contains(input))
 		{
-			validUsername = true;
-		}
-		else if(!username.contains("@"))
-		{
-			validUsername = false;
-		}
-		else if(username.contains("") || username.equals(null))	//have to use ".equals" to check null
-		{
-			validUsername = false;
-		}
+			else if(!username.contains("@"))
+			{
+				validUsername = false;
+			}
+			else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
+			{
+				validUsername = false;
+			}
+		
+			else if(symbolCount >= 2)
+			{
+				validUsername = false;
+			}
+			
+			else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
+			{
+				validUsername = false;
+			}
+			else
+			{
+				validUsername = true;
+			}
+			return validUsername;
 	
-		else if(symbolCount >= 2)
-		{
-			validUsername = false;
 		}
 		
-		else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
-		{
-			validUsername = false;
-		}
-		else
-		{
-			
-		}
-
-		return validUsername;
+		return false;
+		
+//		if(username.contains(input))
+//		{
+//			validUsername = true;
+//		}
+//		else if(!username.contains("@"))
+//		{
+//			validUsername = false;
+//		}
+//		else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
+//		{
+//			validUsername = false;
+//		}
+//	
+//		else if(symbolCount >= 2)
+//		{
+//			validUsername = false;
+//		}
+//		
+//		else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
+//		{
+//			validUsername = false;
+//		}
+//		else
+//		{
+//			
+//		}
+//
+//		return validUsername;
 	}
 	
 	public boolean contentChecker(String contentCheck)
