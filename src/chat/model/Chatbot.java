@@ -24,7 +24,7 @@ public class Chatbot
 		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
-		this.currentTime = null;
+		this.currentTime = LocalTime.now();	//null
 		this.questions = new String [10];
 		this.username = username;
 		this.content = null;
@@ -42,6 +42,9 @@ public class Chatbot
 		buildQuestions();
 	}
 	
+	/**
+	 * Inputs different verbs to be used into the indexes of the verb list
+	 */
 	private void buildVerbs()
 	{
 		verbs[0] = "like";
@@ -60,6 +63,9 @@ public class Chatbot
 		
 	}
 	
+	/**
+	 * Adds at least 6 different movies with their information into movieList
+	 */
 	private void buildMovieList()	//adds movie title and information to the ArrayList as well as to be used in Movie.java
 	{
 		movieList.add(new Movie ("Spiderman", "Fantasy/Science Fiction", "PG-13", "92%", 133, LocalDate.of(2017, 06, 28), 4));
@@ -67,9 +73,12 @@ public class Chatbot
 		movieList.add(new Movie ("March of the Penguins","Documentary", "G", "94%", 86, LocalDate.of(2005, 06, 24), 4.0));
 		movieList.add(new Movie ("National Treasure", "Thriller", "PG", "88%", 131, LocalDate.of(2004, 11, 19), 3.5));
 		movieList.add(new Movie ("Doctor Strange", "Fantasy/Science Fiction", "PG-13", "92%", 115, LocalDate.of(2017, 06, 20), 4));
-
+		movieList.add(new Movie ("Murder on the Orient Express", "Mystery/Crime", "PG-13", "83%", 114, LocalDate.of(2017, 11, 10), 3));
 	}
 	
+	/**
+	 * Adds different items to the shoppingList List
+	 */
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -78,6 +87,12 @@ public class Chatbot
 //		shoppingList.add("slug bait");	//WILL FAIL A TEST LATER
 		shoppingList.add("gross things");
 		shoppingList.add("ice cream");
+		shoppingList.add("sausages");
+		shoppingList.add("noodles");
+		shoppingList.add("cheese");
+		shoppingList.add("clothes");
+		shoppingList.add("shoes");
+		shoppingList.add("A Life");
 	}
 	
 	private void buildCuteAnimals()
@@ -85,6 +100,9 @@ public class Chatbot
 		
 	}
 	
+	/**
+	 * Adds different questions for the questions array for each index
+	 */
 	private void buildQuestions()	//creates and adds new strings (questions for the user) into the questions array
 	{
 		questions[0] = "What is your name? ";
@@ -117,7 +135,7 @@ public class Chatbot
 	}
 	
 	/**
-	 * Creates a response for the chatbot by taking user input and randomized selections and connecting them together
+	 * Creates a response for the chatbot by taking user input and randomized selections and connecting them together.
 	 * @return the response made from user text and random verbs, topics, and questions.
 	 */
 	private String buildChatbotResponse()		//creates a response for the chatbot that randomly selects a verb, topic, and question to ask the user
@@ -206,6 +224,11 @@ public class Chatbot
 		//All of these if statements are the same to the compiler. So they don't take up more or less. The only difference is programmer preference
 	}
 	
+	/**
+	 * Checker looks to see if a HTML tag is valid and returns true if so.
+	 * @param input takes the user's input
+	 * @return returns true or false if it is a valid HTML tag or not
+	 */
 	public boolean htmlTagChecker(String input)
 	{
 		
@@ -274,13 +297,17 @@ public class Chatbot
 
 
 
-	
+	/**
+	 * Checks the user's user name to see if it is valid or not.
+	 * @param input - the user's input
+	 * @return returns true if the user name passes the requirements
+	 */
 	public boolean userNameChecker(String input)
 	{
 		boolean validUsername = false;
 		int symbolCount = 0;
 		
-		//Checks for double or more "@" symbols
+		//Checks for two or more "@" symbols
 		for(int i = 0; i > username.length(); i++)
 		{
 		    if(username.charAt(i) == '@')	//"" is for a string '' is for a character
@@ -291,19 +318,18 @@ public class Chatbot
 		
 		//Testing starts here
 		
-		
 		if(username.contains(input))
 		{
-			else if(!username.contains("@"))
+			if(!username.contains("@"))
 			{
 				validUsername = false;
 			}
-			else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
+			else if(username.isEmpty() || username == null)	//have to use ".equals" to check null
 			{
 				validUsername = false;
 			}
 		
-			else if(symbolCount >= 2)
+			else if(symbolCount > 1)
 			{
 				validUsername = false;
 			}
@@ -316,40 +342,10 @@ public class Chatbot
 			{
 				validUsername = true;
 			}
-			return validUsername;
-	
 		}
 		
-		return false;
-		
-//		if(username.contains(input))
-//		{
-//			validUsername = true;
-//		}
-//		else if(!username.contains("@"))
-//		{
-//			validUsername = false;
-//		}
-//		else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
-//		{
-//			validUsername = false;
-//		}
-//	
-//		else if(symbolCount >= 2)
-//		{
-//			validUsername = false;
-//		}
-//		
-//		else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
-//		{
-//			validUsername = false;
-//		}
-//		else
-//		{
-//			
-//		}
-//
-//		return validUsername;
+		return validUsername;
+
 	}
 	
 	public boolean contentChecker(String contentCheck)
@@ -362,6 +358,11 @@ public class Chatbot
 		return false;
 	}
 	
+	/**
+	 * Looks through the shoppingList list to see if it passes the requirements.
+	 * @param shoppingItem - the required shopping items
+	 * @return returns true if all parameters are passed
+	 */
 	public boolean shoppingListChecker(String shoppingItem)	//looks through the shoppingList list to see if it contains the correct shoppingItem
 	{
 			if(shoppingList.contains(shoppingItem))
@@ -372,6 +373,11 @@ public class Chatbot
 				return false;	
 	}
 	
+	/**
+	 * Checks the movie titles from the movieList to see if they are valid.
+	 * @param title - titles of movie from movieList
+	 * @return returns true if the movie titles are valid
+	 */
 	public boolean movieTitleChecker(String title)
 	{
 		boolean gotMovie = false;
@@ -387,6 +393,11 @@ public class Chatbot
 		return gotMovie;
 	}
 	
+	/**
+	 * Checks the movies' genre's to see if they are valid.
+	 * @param genre - genre of the movies from movieList
+	 * @return returns true if the movies' genre's pass the statements
+	 */
 	public boolean movieGenreChecker(String genre)
 	{
 		boolean gotGenre = false;
@@ -402,6 +413,11 @@ public class Chatbot
 		return gotGenre;
 	}
 
+	/**
+	 * Checks user's input to see if they stated "quit" to terminate the program.
+	 * @param exitString - user's response
+	 * @return returns true if user typed "quit" (ignores case) and is not null
+	 */
 	public boolean quitChecker(String exitString)		//checks if the user typed in quit (casing doesn't matter) and returns true if they did AND if it isn't a null
 	{
 		if (exitString != (null) && exitString.equalsIgnoreCase("quit"))
@@ -412,6 +428,11 @@ public class Chatbot
 		return false;
 	}
 
+	/**
+	 * Check's to see if user has typed something that is just random key inputs.
+	 * @param sample - strings of text implied with keyboard mashing
+	 * @return returns true if detects signs of keyboard mashing with certain combinations
+	 */
 	public boolean keyboardMashChecker(String sample)
 	{
 		return false;
