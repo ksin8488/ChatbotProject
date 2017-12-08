@@ -2,6 +2,11 @@ package chat.model;
 
 import java.time.LocalDate;
 
+/**
+ * Creates and sets different aspects of a movie that is printed out to the user with a toString
+ * @author ksin8488
+ *
+ */
 public class Movie
 {
 	private String title;

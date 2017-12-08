@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * Generates and builds topics for the chatbot to use and tests those topics to see if they are valid
+ * @author Kashish Singh
+ *
+ */
 public class Chatbot
 {
 	private List<Movie> movieList;
@@ -324,7 +329,7 @@ public class Chatbot
 			{
 				validUsername = false;
 			}
-			else if(username.isEmpty() || username == null)	//have to use ".equals" to check null
+			else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
 			{
 				validUsername = false;
 			}

@@ -14,7 +14,11 @@ import javax.swing.SpringLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**
+ * Creates the panel for the GUI and manipulates objects and layout as well as interaction within the panel
+ * @author ksin8488
+ *
+ */
 public class ChatPanel extends JPanel
 {
 	private ChatbotController appController;
