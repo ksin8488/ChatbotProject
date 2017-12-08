@@ -57,12 +57,16 @@ public class Chatbot
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
 	}
-	
+	/**
+	 * Adds topics to the topics list for the Chatbot to use
+	 */
 	private void buildTopics()
 	{
 		
 	}
-	
+	/**
+	 * Adds follow ups to the followups list to be used by the chatbot
+	 */
 	private void buildFollowUps()
 	{
 		
@@ -352,12 +356,20 @@ public class Chatbot
 		return validUsername;
 
 	}
-	
+	/**
+	 * Checks user's content input and checks if it's valid
+	 * @param contentCheck - user's input to see if it is correct
+	 * @return returns true if the content passes and is valid for the program to read
+	 */
 	public boolean contentChecker(String contentCheck)
 	{
 		return false;
 	}
-	
+	/**
+	 * Checks if there are valid animal memes including an otter, puppy, and kitten in the List
+	 * @param input - items within the Animal Meme list
+	 * @return returns true if the list contains the correct memes and is valid
+	 */
 	public boolean cuteAnimalMemeChecker(String input)
 	{
 		return false;
