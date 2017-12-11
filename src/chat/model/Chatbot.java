@@ -114,16 +114,16 @@ public class Chatbot
 	 */
 	private void buildQuestions()	//creates and adds new strings (questions for the user) into the questions array
 	{
-		questions[0] = "What is your name? ";
-		questions[1] = "What do you like to do? ";
-		questions[2] = "What do you hate doing? ";
-		questions[3] = "What is your favorite movie? ";
-		questions[4] = "What is your favorite pie? ";
-		questions[5] = "What is your favorite holiday? ";
-		questions[6] = "What is your favorite pet? ";
-		questions[7] = "What is your favorite flavor of tree? ";
-		questions[8] = "What is your favorite ocean current? ";
-		questions[9] = "What is your favorite bean type? ";
+		questions[0] = "What is your name?";
+		questions[1] = "What do you like to do?";
+		questions[2] = "What do you hate doing?";
+		questions[3] = "What is your favorite movie?";
+		questions[4] = "What is your favorite pie?";
+		questions[5] = "What is your favorite holiday?";
+		questions[6] = "What is your favorite pet?";
+		questions[7] = "What is your favorite flavor of tree?";
+		questions[8] = "What is your favorite ocean current?";
+		questions[9] = "What is your favorite bean type?";
 	}
 	
 	/**
@@ -185,6 +185,15 @@ public class Chatbot
 			break;
 		}
 		return response;
+	}
+	
+	/**
+	 * 
+	 */
+	public String toString()
+	{
+		String toString = "";
+		return toString;
 	}
 	
 	/**
@@ -316,24 +325,27 @@ public class Chatbot
 		boolean validUsername = false;
 		int symbolCount = 0;
 		
-		//Checks for two or more "@" symbols
-		for(int i = 0; i > username.length(); i++)
-		{
-		    if(username.charAt(i) == '@')	//"" is for a string '' is for a character
-			{
-				symbolCount =+ 1;
-			}
-		}
+
 		
 		//Testing starts here
 		
-		if(username.contains(input))
+		if(input != null && input.contains(input))	// have to do != for checking null
 		{
-			if(!username.contains("@"))
+			
+			//Checks for two or more "@" symbols
+			for(int i = 0; i < input.length(); i++)
+			{
+			    if(input.charAt(i) == '@')	//"" is for a string '' is for a character
+				{
+					symbolCount += 1;
+				}
+			}
+			
+			if(!input.contains("@"))
 			{
 				validUsername = false;
 			}
-			else if(username.isEmpty() || username.equals(null))	//have to use ".equals" to check null
+			else if(input.isEmpty())
 			{
 				validUsername = false;
 			}
@@ -343,7 +355,7 @@ public class Chatbot
 				validUsername = false;
 			}
 			
-			else if(!username.substring(0, 1).contains("@") || !username.substring(0, 1).contains(" "))
+			else if(!(input.charAt(0) == '@'))
 			{
 				validUsername = false;
 			}
