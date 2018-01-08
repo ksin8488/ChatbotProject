@@ -32,7 +32,7 @@ public class Chatbot
 		this.currentTime = LocalTime.now();	//null
 		this.questions = new String [10];
 		this.username = username;
-		this.content = null;
+		this.content = content;
 		this.intro = null;
 		this.currentTime = LocalTime.now();
 		this.topics = new String [4];
@@ -45,6 +45,7 @@ public class Chatbot
 		buildMovieList();
 		buildShoppingList();
 		buildQuestions();
+		buildContent();
 	}
 	
 	/**
@@ -57,6 +58,7 @@ public class Chatbot
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
 	}
+	
 	/**
 	 * Adds topics to the topics list for the Chatbot to use
 	 */
@@ -64,6 +66,7 @@ public class Chatbot
 	{
 		
 	}
+	
 	/**
 	 * Adds follow ups to the followups list to be used by the chatbot
 	 */
@@ -125,6 +128,15 @@ public class Chatbot
 		questions[8] = "What is your favorite ocean current?";
 		questions[9] = "What is your favorite bean type?";
 	}
+	
+	public String buildContent()
+	{
+		boolean hasContent = false;
+		
+		content = "Pickles are tasty";
+		return content;
+	}
+	
 	
 	/**
 	 * Method takes the user's response and creates a new text String based on the response and returns it as displayed text.
@@ -188,7 +200,7 @@ public class Chatbot
 	}
 	
 	/**
-	 * 
+	 * Changes the toString of chatbot to something that does not contain a '@' sign
 	 */
 	public String toString()
 	{
@@ -312,9 +324,6 @@ public class Chatbot
 //			}
 	}
 
-
-
-
 	/**
 	 * Checks the user's user name to see if it is valid or not.
 	 * @param input - the user's input
@@ -368,6 +377,7 @@ public class Chatbot
 		return validUsername;
 
 	}
+	
 	/**
 	 * Checks user's content input and checks if it's valid
 	 * @param contentCheck - user's input to see if it is correct
@@ -375,7 +385,10 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String contentCheck)
 	{
-		return false;
+		if(content.contains(""))
+			return true;
+		else
+			return false;
 	}
 	/**
 	 * Checks if there are valid animal memes including an otter, puppy, and kitten in the List
