@@ -70,6 +70,18 @@ public class ChatbotController
 		
 		return response;
 	}
+	
+	public void handleErrors(Exception error)
+	{
+		display.displayText(error.getMessage());
+	}
+	
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
+	}
+	
+	
 	/**
 	 * Helper Method to close the app after displaying a goodbye
 	 */
