@@ -1,6 +1,7 @@
 package chat.view;
 
 import javax.swing.*;
+
 //import javax.swing.JPanel;
 //import javax.swing.JButton;
 //import javax.swing.JTextField;
@@ -54,6 +55,10 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10, 25);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
+
+		appLayout.putConstraint(SpringLayout.NORTH, searchButton, 0, SpringLayout.NORTH, tweetButton);
+		appLayout.putConstraint(SpringLayout.WEST, searchButton, 0, SpringLayout.WEST, loadButton);
+
 		appLayout.putConstraint(SpringLayout.NORTH, tweetButton, 12, SpringLayout.SOUTH, chatButton);
 		appLayout.putConstraint(SpringLayout.WEST, tweetButton, 0, SpringLayout.WEST, chatButton);
 		appLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, chatButton);
@@ -148,6 +153,38 @@ public class ChatPanel extends JPanel
 				inputField.setText("");
 			}
 		});
+		
+		tweetButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					appController.tweet(inputField.getText());
+				}
+			});
+		
+		searchButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					
+				}
+			});
+		
+		saveButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					
+				}
+			});
+		
+		loadButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					
+				}
+			});
 	
 	}
 }
