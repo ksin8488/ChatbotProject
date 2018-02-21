@@ -12,7 +12,7 @@ public class CTECTwitter
 	private ChatbotController appController;
 	private Twitter chatbotTwitter;
 	
-	public CTECTwitter(ChatbotController appCoroller)
+	public CTECTwitter(ChatbotController appController)
 	{
 		this.appController = appController;
 		this.chatbotTwitter = TwitterFactory.getSingleton();
@@ -20,6 +20,7 @@ public class CTECTwitter
 	
 	public void sendTweet(String textToTweet)
 	{
+		
 		try
 		{
 			chatbotTwitter.updateStatus(textToTweet + " @ChatbotCTEC");
@@ -32,5 +33,7 @@ public class CTECTwitter
 		{
 			appController.handleErrors(otherError);
 		}
+		
+		
 	}
 }

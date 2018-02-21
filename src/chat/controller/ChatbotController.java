@@ -71,6 +71,7 @@ public class ChatbotController
 		return response;
 	}
 	
+	//To be used the Twitter project
 	public void handleErrors(Exception error)
 	{
 		display.displayText(error.getMessage());
@@ -105,10 +106,4 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
-	
-	//To be used the Twitter project
-	public void handleErrors(Exception error)
-	{
-		display.displayText(error.getMessage());
-	}
 }
