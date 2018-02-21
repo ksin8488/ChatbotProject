@@ -3,6 +3,7 @@ package chat.controller;
 import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
+import chat.model.CTECTwitter;	//so we can use the CTECTwitter class
 
 /**
  * Manages the Chatbot application including the Model and Frame of the View package.
@@ -14,6 +15,7 @@ public class ChatbotController
 	private Chatbot chatbot;
 	private PopupDisplay display;
 	private ChatFrame appFrame;
+	private CTECTwitter myTwitter;
 
 	/**
 	 * initializes certain values as well as activate them
@@ -21,6 +23,7 @@ public class ChatbotController
 	public ChatbotController()
 	{
 		chatbot = new Chatbot("Kashish Singh");
+		myTwitter = new CTECTwitter(this);	//comes BEFORE the view
 		display = new PopupDisplay();
 		appFrame = new ChatFrame(this);
 	}

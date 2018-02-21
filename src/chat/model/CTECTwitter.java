@@ -18,4 +18,8 @@ public class CTECTwitter
 		this.chatbotTwitter = TwitterFactory.getSingleton();
 	}
 	
+	public void sendTweet(String textToTweet)
+	{
+		
+	}
 }
