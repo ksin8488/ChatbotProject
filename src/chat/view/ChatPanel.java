@@ -149,7 +149,7 @@ public class ChatPanel extends JPanel
 			{
 				public void actionPerformed(ActionEvent click)
 				{
-						appController.tweet(inputField.getText());
+					appController.tweet(inputField.getText());
 				}
 			});
 		
