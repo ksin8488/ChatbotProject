@@ -34,6 +34,8 @@ public class ChatbotController
 	public void start()
 	{
 		String response = display.collectResponse("What do you want to talk about?");
+		String results = IOController.loadfromFile(this,  "commonWords.txt");
+		IOController.saveToFile(this,  results,  "");
 	}
 	
 	/**
