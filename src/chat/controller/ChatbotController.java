@@ -84,6 +84,11 @@ public class ChatbotController
 		myTwitter.sendTweet(text);
 	}
 	
+	public String search(String text)
+	{
+		return myTwitter.getMostCommonWord(text);	//a "go between" for files in transferring the information between the model and view
+	}
+	
 	
 	/**
 	 * Helper Method to close the app after displaying a goodbye
@@ -108,4 +113,5 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
+
 }

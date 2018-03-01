@@ -166,7 +166,9 @@ public class ChatPanel extends JPanel
 			{
 				public void actionPerformed(ActionEvent click)
 				{
+					String usernameToSearch = inputField.getText();
 					
+					chatArea.setText(appController.search(usernameToSearch));		//sets the text in the chatArea to what it gets from appController
 				}
 			});
 		
