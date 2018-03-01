@@ -26,7 +26,7 @@ public class CTECTwitter
 	private Twitter chatbotTwitter;
 	private List<Status> searchedTweets;
 	private List<String> tweetedWords;
-	private long totalWordCount;
+	private long totalWordCount;		//long is roughly 9 quintillion which we may hit when analyzing lots of data
 	
 	public CTECTwitter(ChatbotController appController)
 	{
@@ -41,40 +41,54 @@ public class CTECTwitter
 	{
 		String mostCommon = "";
 		
-		collectTweets(username);
+		collectTweets(username);		//collects the tweets of whomever's username is put in
+		turnStatusesToWords();		//gets the turns the status's of people to words
 		
 		return mostCommon;
 	}
 	
 	private void collectTweets(String username)
 	{
-		searchedTweets.clear();
-		tweetedWords.clear();
+		searchedTweets.clear();		//clears them out so they don't mix tweet results from multiple users
+		tweetedWords.clear();		//clears out the number so it won't mix
 		
 		Paging statusPage = new Paging(1, 100);
 		int page = 1;
-		long lastID = Long.MAX_VALUE;
+		long lastID = Long.MAX_VALUE;		//
 		
 		while(page <= 10)
 		{
 			statusPage.setPage(page);
-			try
+			try		//because we ccan't guarantee network access, username is correct, twitter isn't down, etc.
 			{
 				ResponseList<Status> listedTweets = chatbotTwitter.getUserTimeline(username, statusPage);
-				for(Status current : listedTweets)
+				for(Status current : listedTweets)	//for-each loop to go through all the tweets
 				{
-					if(current.getId() < lastID)
+					if(current.getId() < lastID)		//if the Id is less than the Max value of Long (it should be)
 					{
-						searchedTweets.add(current);
+						searchedTweets.add(current);		//call would keep being called if we didn't have the if block. Guarantees we will have unique tweets
 						lastID = current.getId();
 					}
 				}
 			}
 			catch(TwitterException searchTweetError)
 			{
-				appController.handleErrors(searchTweetError);
+				appController.handleErrors(searchTweetError);	//sends the error
 			}
-			page++;
+			page++;	//test condition change makes the page goes up by 1
+		}
+	}
+	
+	private void turnStatusesToWords()
+	{
+		for(Status currentStatus : searchedTweets)
+		{
+			String tweetText = currentStatus.getText();
+			String [] tweetWords = tweetText.split(" ");
+			for(int index = 0; index < tweetWords.length; index++)
+			{
+				tweetedWords.add(removePunctuation(tweetWords[index]).tring());
+			}
 		}
 	}
 	
