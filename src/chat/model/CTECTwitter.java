@@ -84,12 +84,27 @@ public class CTECTwitter
 		for(Status currentStatus : searchedTweets)
 		{
 			String tweetText = currentStatus.getText();
-			String [] tweetWords = tweetText.split(" ");
+			String [] tweetWords = tweetText.split(" ");	//split commands gives an array of string from strings and since there is a space, it will consider words to be things after spaces
 			for(int index = 0; index < tweetWords.length; index++)
 			{
-				tweetedWords.add(removePunctuation(tweetWords[index]).tring());
+				tweetedWords.add(removePunctuation(tweetWords[index]).trim());
 			}
 		}
+	}
+	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ".,'?!:;\"() {}^[]<>-";	//will end up affecting website addresses because they use some of this.
+		
+		String scrubbedString = "";
+		for(int i = 0; i < currentString.length(); i++)
+		{
+			if(punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
 	}
 	
 	public void sendTweet(String textToTweet)
