@@ -43,6 +43,8 @@ public class CTECTwitter
 		
 		collectTweets(username);		//collects the tweets of whomever's username is put in
 		turnStatusesToWords();		//gets the turns the status's of people to words
+		totalWordCount = tweetedWords.size(); //Sets the amount of tweetedWords.size() into totalWordCount
+		String [] boring = createIgnoredWordArray();
 		
 		return mostCommon;
 	}
@@ -105,6 +107,37 @@ public class CTECTwitter
 			}
 		}
 		return scrubbedString;
+	}
+	
+	private String [] createIgnoredWordArray()
+	{
+		String [] boringWords;
+		String fileText = IOController.loadfromFile(appController,  "commonWords.txt");	//grabs the text from the file
+		int wordCount = 0;	//sets the word count to 0
+		
+		Scanner wordScanner = new Scanner(fileText);	//can read a string
+		
+		while(wordScanner.hasNextLine())	//counts and eats the scanner lines as long as there are more lines
+		{
+			wordScanner.nextLine();	
+			wordCount++;
+		}
+		
+		boringWords = new String [wordCount];
+		wordScanner.close();		//MUST close the access point because it is programmer's responsibility
+		
+		//Alternative file loading method.
+		//Uses the InputStream class
+		//Notice the lack of try/catch
+		
+		wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));	//turns it into an inputStream
+		for(int index = 0; index < boringWords.length; index++)
+		{
+			boringWords[index] = wordScanner.nextLine();		//each word is put into the array
+		}
+		
+		wordScanner.close();		//scanner is closed
+		return boringWords;
 	}
 	
 	public void sendTweet(String textToTweet)
