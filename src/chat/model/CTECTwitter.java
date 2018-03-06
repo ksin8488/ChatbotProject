@@ -158,4 +158,19 @@ public class CTECTwitter
 		
 		
 	}
+	
+	private void trimTheBoringWords(String [] boringWords)
+	{
+		for(int index = tweetedWords.size() - 1; index >= 0; index--)
+		{
+			for(int removeIndex = 0; removeIndex < boringWords.length; removeIndex++)	//usually always better to go backwards when removing
+			{
+				if(tweetedWords.get(index).equals(boringWords[removeIndex]))
+				{
+					tweetedWords.remove(index);
+					removeIndex = boringWords.length;
+				}
+			}
+		}
+	}
 }
