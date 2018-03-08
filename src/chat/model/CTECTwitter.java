@@ -177,4 +177,29 @@ public class CTECTwitter
 		}
 	}
 	
+	private void removeBlanks()
+	{
+		for (int index = tweetedWords.size() - 1; index >= 0; index--)	//backwards so you don't get out of bounds
+		{
+			if(tweetedWords.get(index).trim().length() == 0)	//spaces off of the front and back end are removed from a word
+			{
+				tweetedWords.remove(index);
+			}
+		}
+	}
+	
+	private void generateWordCount()
+	{
+		for(String word: tweetedWords)
+		{
+			if(!wordsAndCount.containsKey(word.toLowerCase()))	//if it returns false
+			{
+				wordsAndCount.put(word.toLowerCase(), 1);	
+			}
+			else
+			{
+				wordsAndCount.replace(word.toLowerCase(), wordsAndCount.get(word.toLowerCase()) + 1);	 
+			}
+		}
+	}
 }
