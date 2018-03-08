@@ -14,11 +14,11 @@ import twitter4j.*;	//can use this since our program won't suffer too much slowd
 //import twitter4j.ResponseList;
 //import twitter4j.Twitter;
 //import twitter4j.Status;
-
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 public class CTECTwitter
 {
@@ -27,6 +27,7 @@ public class CTECTwitter
 	private List<Status> searchedTweets;
 	private List<String> tweetedWords;
 	private long totalWordCount;		//long is roughly 9 quintillion which we may hit when analyzing lots of data
+	private HashMap<String, Integer> wordsAndCount;
 	
 	public CTECTwitter(ChatbotController appController)
 	{
@@ -34,6 +35,7 @@ public class CTECTwitter
 		this.searchedTweets = new ArrayList<Status>();
 		this.tweetedWords = new ArrayList<String>();
 		this.chatbotTwitter = TwitterFactory.getSingleton();
+		this.wordsAndCount = new HashMap<String, Integer>();
 		this.totalWordCount = 0;
 	}
 	
@@ -86,6 +88,7 @@ public class CTECTwitter
 		for(Status currentStatus : searchedTweets)
 		{
 			String tweetText = currentStatus.getText();
+			tweetText = tweetText.replaceAll("\n",  " ");
 			String [] tweetWords = tweetText.split(" ");	//split commands gives an array of string from strings and since there is a space, it will consider words to be things after spaces
 			for(int index = 0; index < tweetWords.length; index++)
 			{
@@ -173,4 +176,5 @@ public class CTECTwitter
 			}
 		}
 	}
+	
 }
