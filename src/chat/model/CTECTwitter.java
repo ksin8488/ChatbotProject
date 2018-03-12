@@ -103,8 +103,8 @@ public class CTECTwitter
 	{
 		for(Status currentStatus : searchedTweets)
 		{
-			String tweetText = currentStatus.getText();
-			tweetText = tweetText.replaceAll("\n",  " ");
+			String tweetText = currentStatus.getText().toLowerCase();
+			tweetText = tweetText.replace("\n",  " ");
 			String [] tweetWords = tweetText.split(" ");	//split commands gives an array of string from strings and since there is a space, it will consider words to be things after spaces
 			for(int index = 0; index < tweetWords.length; index++)
 			{
@@ -115,7 +115,7 @@ public class CTECTwitter
 	
 	private String removePunctuation(String currentString)
 	{
-		String punctuation = ".,'?!:;\"() {}^[]<>-";	//will end up affecting website addresses because they use some of this.
+		String punctuation = ".,'?!:;\"() {}^[]<>-";		//will end up affecting website addresses because they use some of this.
 		
 		String scrubbedString = "";
 		for(int i = 0; i < currentString.length(); i++)
@@ -184,7 +184,7 @@ public class CTECTwitter
 		{
 			for(int removeIndex = 0; removeIndex < boringWords.length; removeIndex++)	//usually always better to go backwards when removing
 			{
-				if(tweetedWords.get(index).equals(boringWords[removeIndex]))
+				if(tweetedWords.get(index).equalsIgnoreCase(boringWords[removeIndex]))
 				{
 					tweetedWords.remove(index);
 					removeIndex = boringWords.length;
@@ -217,5 +217,13 @@ public class CTECTwitter
 				wordsAndCount.replace(word.toLowerCase(), wordsAndCount.get(word.toLowerCase()) + 1);	 
 			}
 		}
+	}
+	
+	private ArrayList<Map.Entry<String, Integer>> sortHashMap()	//going to be used to do sorting for us
+	{
+		ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(wordsAndCount.entrySet());
+		entries.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+		
+		return entries;
 	}
 }
