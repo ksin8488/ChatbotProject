@@ -49,8 +49,8 @@ public class CTECTwitter
 		turnStatusesToWords();		//gets the turns the status's of people to words
 		totalWordCount = tweetedWords.size(); //Sets the amount of tweetedWords.size() into totalWordCount
 		String [] boring = createIgnoredWordArray();
-		trimTheBoringWords(boring);
 		removeBlanks();
+		trimTheBoringWords(boring);
 		generateWordCount();
 		
 		ArrayList<Map.Entry<String, Integer>> sorted = sortHashMap();
@@ -64,7 +64,44 @@ public class CTECTwitter
 				+ (DecimalFormat.getPercentInstance().format(((double) maxWord)/totalWordCount)) + " of total words: " + totalWordCount + " and is " +
 				((DecimalFormat.getPercentInstance().format(((double) maxWord)/wordsAndCount.size())) + " of the unique words: " + wordsAndCount.size());
 				
+		mostCommon += "\n\n" + sortedWords();
+		
 		return mostCommon;
+	}
+	
+	private String sortedWords()
+	{
+		String allWords = "";
+		String [] words = new String [wordsAndCount.size()];
+		ArrayList<String> wordList = new ArrayList<String>(wordsAndCount.keySet());
+		
+		for(int index = 0; index < wordsAndCount.size(); index++)
+		{
+			words[index] = wordList.get(index);
+		}
+		for(int index = 0; index < words.length - 1; index++)
+		{
+			int maxIndex = index;
+			
+			for(int inner = index + 1; inner < words.length; inner++)
+			{
+				if(words[inner].compareTo(words[maxIndex]) > 0)
+				{
+					maxIndex = inner;
+				}
+			}
+			
+			String tempMax = words[maxIndex];	//a temp variable so it can be used as a swap
+			words[maxIndex] = words[index];
+			words[index] = tempMax;
+		}
+		
+		for(String word : words)
+		{
+			allWords += word + ", ";
+		}
+		
+		return allWords;
 	}
 	
 	private void collectTweets(String username)
