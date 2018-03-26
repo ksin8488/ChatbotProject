@@ -22,6 +22,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.lang.String;
+
 public class CTECTwitter
 {
 	private ChatbotController appController;
@@ -269,15 +271,37 @@ public class CTECTwitter
 		String results = "";
 		searchedTweets.clear();
 		Query twitterQuery = new Query(topic);
+		
+		//GeoCode
 		int resultMax = 750;
+		double latitude = 40.5650;
+		double longitude = 111.8390;
+		double radius = 500;		//500 Mile radius
+		
 		long lastId = Long.MAX_VALUE;
-		twitterQuery.setGeoCode(new GeoLocation(latitude, longitude), radius, Query.MEASUREMENT);
+		
+		//twitterQuery.track(new String[] {});	//use to track certain words or keywords
+		
+		twitterQuery.setGeoCode(new GeoLocation(latitude, longitude), radius, Query.MILES);
+		twitterQuery.setLang("en");	//sets the search results language to English
+		twitterQuery.setResultType(Query.MIXED);	//Guarantees the results are a mix of popular and recent - already default without specifying
+		
 		ArrayList<Status> matchingTweets = new ArrayList<Status>();
+		
 		while(searchedTweets.size() < resultMax)
 		{
 			try
 			{
 				QueryResult resultingTweets = chatbotTwitter.search(twitterQuery);
+				
+				for(Status currentTweet : resultingTweets.getTweets()) 
+				{
+					if(currentTweet.getId() < lastId)
+					{
+						matchingTweets.add(currentTweet);
+						lastId = currentTweet.getId();
+					}
+				}
 			}
 			catch(TwitterException error)
 			{
